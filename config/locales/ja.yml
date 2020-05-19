@@ -1,0 +1,7 @@
+ja:
+  enums:
+    end_user:
+      account_type:
+        ordinary_deposit: '普通預金'
+        current_deposit:  '当座預金'
+        savings_deposit:  '貯蓄預金'

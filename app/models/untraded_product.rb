@@ -1,0 +1,2 @@
+class UntradedProduct < ApplicationRecord
+end

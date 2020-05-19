@@ -1,0 +1,86 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: create_end_user_registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <h3>アカウント情報</h3>
+
+  <div class="field">
+    <%= f.label :name %>(姓名)<br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone_number %><br />
+    <%= f.text_field :phone_number, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <h3>商品発送先</h3>
+
+  <div class="field">
+    <%= f.label :postal_code %><br />
+    <%= f.text_field :postal_code, autofocus: true, id: "postal_code" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address, autofocus: true, id: "address" %>
+    <br>住所は正確に入力してください。正確に登録しなければ、商品の届かない可能性があります。
+  </div>
+
+  <h3>売上振込口座</h3>
+
+  <div class="field">
+    銀行名<br />
+    <%= f.text_field :bank_name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    支店コード<br />
+    <%= f.text_field :branch_code, autofocus: true %>
+  </div>
+
+  <div class="field">
+    口座種別<br />
+    <%= f.select :account_type, EndUser.account_types.keys.map {|key| [I18n.t("enums.end_user.account_type.#{key}"), key]}, autofocus: true %>
+  </div>
+
+  <div class="field">
+    口座番号<br />
+    <%= f.text_field :account_number, autofocus: true %>
+  </div>
+
+  <div class="field">
+    口座名義（セイ）<br />
+    <%= f.text_field :account_holder_last_name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    口座名義（メイ）<br />
+    <%= f.text_field :account_holder_first_name, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "publics/shared/links" %>
